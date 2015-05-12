@@ -1,6 +1,5 @@
 CACHE MANIFEST
 ../dist/fullcalendar.css
-../dist/fullcalendar.print.css
 calIndex.html
 calScript.js
 lib/moment.js
