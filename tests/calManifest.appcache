@@ -4,7 +4,7 @@ calIndex.html
 calScript.js
 lib/moment.js
 ../misc/fullcalendar.js
-http://code.jquery.com/jquery-1.11.2.min.js
+lib/jquery-2.1.4.min.js
 http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js
 
 
