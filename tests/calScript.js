@@ -1,13 +1,16 @@
+//Main jQuery
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         height:600,
         selectable:true,
+        //Buttons at top of page
         header:{
             left:'prev,next,today',
             center:'title',
             right:'month,agendaDay'
         },
         defaultView:'month',
+        //Onclick function for dates
         dayClick:function(date,jsEvent,view){
             toDate = new Date(date);
             toDate.setDate(toDate.getDate() + 1 );
@@ -18,6 +21,7 @@ $(document).ready(function() {
     });
 });
 
+//Renders events and calls store()
 function doSubmit( myTitle, myStart, myEnd, myColor ){
     $("#calendar").fullCalendar('renderEvent',
     {
@@ -29,6 +33,7 @@ function doSubmit( myTitle, myStart, myEnd, myColor ){
     store( myTitle, myStart, myEnd, myColor );
 }
 
+//Called only when retrieve() exectues on page load, same as doOnload() except it doesn't store to localStorage
 function doOnload( myTitle, myStart, myEnd, myColor ){
     $("#calendar").fullCalendar('renderEvent',
     {
@@ -39,10 +44,10 @@ function doOnload( myTitle, myStart, myEnd, myColor ){
     }, true );
 }
 
+//Stores events in localStorage
 function store( myTitle, myStart, myEnd, myColor ){
     //Check browser support
     if( typeof(Storage) != "undefined" ){
-        //Store
         var toStore = { 'myTitle':myTitle, 'myStart':myStart, 'myEnd':myEnd, 'myColor':myColor };
         localStorage.setItem( myStart, JSON.stringify(toStore) );
         console.log( "Object stored!" );
@@ -52,6 +57,7 @@ function store( myTitle, myStart, myEnd, myColor ){
     }
 }
 
+//Gets events from localStorage on page load, then calls doOnload() to render them
 function retrieve(){
     for( var i = 0, len = localStorage.length; i < len; i++ ){
         var key = localStorage.key(i);
@@ -62,6 +68,7 @@ function retrieve(){
     }
 }
 
+//Angular controller that keeps track of bound data and calls doSubmit when button is clicked
 var app = angular.module('myApp', []);
 app.controller('formCtrl', function($scope) {
     $scope.submit = function() {

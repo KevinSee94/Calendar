@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html manifest="calManifest.appcache">
-<!-- manifest="calManifest.appcache" -->
 <head lang="en">
     <meta charset="UTF-8">
     <title>Calendar Test</title>
@@ -12,8 +11,11 @@
     <script src="calScript.js"></script>
 </head>
 <body onload="retrieve()">
+    <!-- Calendar -->
     <div id='calendar'></div>
     <br><br>
+
+    <!-- Angular Form -->
     <div ng-app="myApp" ng-controller="formCtrl">
     <form id="inputForm">
         Event Name: <input type="text" id="eName" ng-model="user.eName"><br><br>
@@ -21,7 +23,7 @@
         Start Time: <input type="time" id="sTime" ng-model="user.sTime" placeholder="HH:mm:ss"><br><br>
         End Date: <input type="date" id="eDate" ng-model="user.eDate"><br><br>
         End Time: <input type="time" id="eTime" ng-model="user.eTime" placeholder="HH:mm:ss"><br><br>
-                    <button ng-click='submit()'>Create Event</button>
+        <button ng-click='submit()'>Create Event</button>
     </form>
     </div>
 </body>
